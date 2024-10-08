@@ -6,7 +6,13 @@
   <title>Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Adicione seu estilo para a tela de login aqui */
+    /* Estilos para a tela de login */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       display: flex;
@@ -16,6 +22,7 @@
       margin: 0;
       background-color: #f0f2f5;
     }
+
     .login-container {
       width: 100%;
       max-width: 400px;
@@ -25,6 +32,40 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      font-size: 2em;
+      color: #333;
+    }
+
+    .login-container div {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      font-weight: 500;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #ED196D;
+    }
+
     .login-btn {
       width: 100%;
       padding: 15px;
@@ -35,6 +76,16 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .login-btn:hover {
+      background-color: #d0175e;
+      transform: scale(1.02);
+    }
+
+    .login-btn:active {
+      background-color: #b01551;
     }
   </style>
 </head>
@@ -47,12 +98,10 @@
         <label for="username">Nome de Usuário:</label>
         <input type="text" id="username" required>
       </div>
-      <br>
       <div>
         <label for="password">Senha:</label>
         <input type="password" id="password" required>
       </div>
-      <br>
       <button type="submit" class="login-btn">Entrar</button>
     </form>
   </div>
