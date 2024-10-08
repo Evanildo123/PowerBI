@@ -33,6 +33,7 @@
       align-items: center;
       position: relative;
       transition: width 0.3s;
+      overflow: hidden;
     }
 
     /* Menu recolhido */
@@ -47,6 +48,8 @@
       margin-bottom: 30px;
       color: #ED196D;
       transition: opacity 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     .menu.compacto h2 {
@@ -65,6 +68,8 @@
       background-color: #333;
       transition: background 0.3s, transform 0.2s, padding 0.3s;
       text-align: center;
+      white-space: normal; /* Permite quebras de linha */
+      word-wrap: break-word; /* Quebra palavras longas */
     }
 
     .menu a:hover {
@@ -75,6 +80,7 @@
     .menu.compacto a {
       padding: 12px;
       text-align: center;
+      font-size: 0.85em; /* Reduz o tamanho da fonte para caber melhor */
     }
 
     /* Botão de recolher/expandir */
