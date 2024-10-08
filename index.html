@@ -118,6 +118,9 @@
       const password = document.getElementById("password").value;
 
       if (username === validUsername && password === validPassword) {
+        // Armazena o token de autenticação no Local Storage
+        localStorage.setItem("authToken", "usuario-autenticado");
+        
         // Redireciona para a tela principal (home.html) após login bem-sucedido
         window.location.href = "home.html";
       } else {
