@@ -67,8 +67,8 @@
     .content {
       flex: 1;
       height: 100vh;
-      background-image: url('https://github.com/Evanildo123/PowerBI/blob/main/Design%20sem%20nome.png?raw=true'); /* Substitua com o link da sua imagem */
-      background-size: cover; /* Faz com que a imagem cubra toda a área de conteúdo */
+      background-image: url('URL_DA_SUA_IMAGEM'); /* Substitua com o link da sua imagem */
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       display: flex;
@@ -99,6 +99,7 @@
     <a href="#" onclick="navigate('page1')">Equipamentos</a>
     <a href="#" onclick="navigate('page2')">Página 2</a>
     <a href="#" onclick="navigate('page3')">Página 3</a>
+    <a href="#" onclick="navigate('3dsmax')">3ds Max</a> <!-- Botão 3ds Max -->
     <a href="#" class="logout-btn" onclick="logout()">Sair</a>
   </div>
 
@@ -125,9 +126,11 @@
       const contentDiv = document.getElementById('content');
 
       if (page === 'page1') {
-        contentDiv.innerHTML = `<iframe src="https://fast.com/pt/" title="Equipamentos"></iframe>`; // Carrega o link no iframe
+        contentDiv.innerHTML = `<iframe src="https://fast.com/pt/" title="Equipamentos"></iframe>`;
+      } else if (page === '3dsmax') {
+        contentDiv.innerHTML = `<h2>3ds Max</h2><p>Bem-vindo à seção de 3ds Max. Aqui você pode acessar tutoriais, recursos e informações sobre o software 3ds Max.</p>`;
       } else {
-        loadContent(page + '.html'); // Carrega conteúdo interno
+        loadContent(page + '.html');
       }
     }
 
