@@ -148,4 +148,11 @@
           contentDiv.innerHTML = data;
         })
         .catch(error => {
-          contentDiv.innerHTML = '<p>Erro ao carregar o conteúdo.
+          contentDiv.innerHTML = '<p>Erro ao carregar o conteúdo.</p>';
+          console.error("Erro ao carregar a página: ", error);
+        });
+    }
+  </script>
+
+</body>
+</html>
