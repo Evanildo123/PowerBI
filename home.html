@@ -63,21 +63,23 @@
       transform: scale(1.05);
     }
 
-    /* Área de conteúdo com imagem de fundo */
+    /* Área de conteúdo */
     .content {
       flex: 1;
       height: 100vh;
-      background-image: url('URL_DA_SUA_IMAGEM'); /* Substitua com o link da sua imagem */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #fff;
       text-align: center;
+      overflow-y: auto;
+      padding: 20px;
+      color: #fff;
     }
 
+    /* Conteúdo padrão */
     .content h2 {
       font-size: 2em;
       margin-bottom: 20px;
@@ -126,9 +128,10 @@
       const contentDiv = document.getElementById('content');
 
       if (page === 'page1') {
-        contentDiv.innerHTML = `<iframe src="https://fast.com/pt/" title="Equipamentos"></iframe>`;
+        contentDiv.innerHTML = `<iframe src="https://fast.com/pt/" title="Equipamentos" style="width: 100%; height: 100%; border: none;"></iframe>`;
       } else if (page === '3dsmax') {
         contentDiv.innerHTML = `<h2>3ds Max</h2><p>Bem-vindo à seção de 3ds Max. Aqui você pode acessar tutoriais, recursos e informações sobre o software 3ds Max.</p>`;
+        contentDiv.style.backgroundImage = 'none'; // Remove imagem de fundo se existir
       } else {
         loadContent(page + '.html');
       }
@@ -145,11 +148,4 @@
           contentDiv.innerHTML = data;
         })
         .catch(error => {
-          contentDiv.innerHTML = '<p>Erro ao carregar o conteúdo.</p>';
-          console.error("Erro ao carregar a página: ", error);
-        });
-    }
-  </script>
-
-</body>
-</html>
+          contentDiv.innerHTML = '<p>Erro ao carregar o conteúdo.
