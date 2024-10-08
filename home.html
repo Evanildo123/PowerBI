@@ -129,6 +129,15 @@
     function logout() {
       localStorage.removeItem("authToken"); // Remove o token de autenticação
       window.location.href = "index.html";  // Redireciona para a tela de login
+      // Função para redirecionar ou carregar conteúdo
+    function navigate(page) {
+      const contentDiv = document.getElementById('content');
+
+      if (page === 'page1') {
+        contentDiv.innerHTML = `<iframe src="https://fast.com/pt/" title="Equipamentos"></iframe>`; // Carrega o link no iframe
+      } else {
+        loadContent(page + '.html'); // Carrega conteúdo interno
+      }
     }
   </script>
 
