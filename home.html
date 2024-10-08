@@ -32,14 +32,7 @@
       flex-direction: column;
       align-items: center;
       position: relative;
-      transition: width 0.3s;
       overflow: hidden;
-    }
-
-    /* Menu recolhido */
-    .menu.compacto {
-      width: 80px;
-      padding: 10px;
     }
 
     .menu h2 {
@@ -47,13 +40,6 @@
       font-size: 1.5em;
       margin-bottom: 30px;
       color: #ED196D;
-      transition: opacity 0.3s;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-
-    .menu.compacto h2 {
-      opacity: 0;
     }
 
     .menu a {
@@ -77,23 +63,6 @@
       transform: scale(1.05);
     }
 
-    .menu.compacto a {
-      padding: 12px;
-      text-align: center;
-      font-size: 0.85em; /* Reduz o tamanho da fonte para caber melhor */
-    }
-
-    /* Botão de recolher/expandir */
-    .toggle-btn {
-      cursor: pointer;
-      margin-bottom: 20px;
-      font-size: 1.5em;
-      color: #ED196D;
-      background: none;
-      border: none;
-      transition: transform 0.3s;
-    }
-
     /* Área de conteúdo */
     .content {
       flex: 1;
@@ -114,7 +83,6 @@
 
   <!-- Menu Lateral -->
   <div class="menu" id="menu">
-    <button class="toggle-btn" onclick="toggleMenu()">&#9776;</button>
     <h2>Menu</h2>
     <a href="#" onclick="navigate('page1')">Equipamentos</a>
     <a href="#" onclick="navigate('page2')">Página 2</a>
@@ -138,12 +106,6 @@
     function logout() {
       localStorage.removeItem("authToken"); // Remove o token de autenticação
       window.location.href = "index.html";  // Redireciona para a tela de login
-    }
-
-    // Função para alternar o menu entre compacto e expandido
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('compacto');
     }
 
     // Função para redirecionar ou carregar conteúdo
