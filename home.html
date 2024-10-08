@@ -100,18 +100,21 @@
   <!-- Menu Lateral -->
   <div class="menu">
     <h2>Menu</h2>
-    <a href="#">Equipamentos</a>
+    <a href="#" onclick="navigate('page1')">Equipamentos</a>
     <a href="#">Página 2</a>
     <a href="#">Página 3</a>
     <a href="#" class="logout-btn" onclick="logout()">Sair</a>
   </div>
 
   <!-- Conteúdo Principal -->
-  <div class="content">
+  <div class="content" id="content">
     <h2>Bem-vindo à Tela Principal</h2>
     <p>Esta é a sua área principal. Aqui, você pode acessar conteúdos e realizar tarefas dentro do sistema.</p>
     <p>Você está autenticado e tem acesso às funcionalidades restritas.</p>
     <ul>
+      <li>Item 1: Revisar relatórios</li>
+      <li>Item 2: Atualizar informações</li>
+      <li>Item 3: Monitorar progresso</li>
     </ul>
   </div>
 
@@ -126,7 +129,9 @@
     function logout() {
       localStorage.removeItem("authToken"); // Remove o token de autenticação
       window.location.href = "index.html";  // Redireciona para a tela de login
-      // Função para redirecionar ou carregar conteúdo
+    }
+
+    // Função para redirecionar ou carregar conteúdo
     function navigate(page) {
       const contentDiv = document.getElementById('content');
 
@@ -135,6 +140,22 @@
       } else {
         loadContent(page + '.html'); // Carrega conteúdo interno
       }
+    }
+
+    // Função para carregar conteúdo dinamicamente (caso queira usar para outras páginas)
+    function loadContent(page) {
+      const contentDiv = document.getElementById('content');
+      contentDiv.innerHTML = '<p class="loading">Carregando conteúdo...</p>';
+
+      fetch(page)
+        .then(response => response.text())
+        .then(data => {
+          contentDiv.innerHTML = data;
+        })
+        .catch(error => {
+          contentDiv.innerHTML = '<p>Erro ao carregar o conteúdo.</p>';
+          console.error("Erro ao carregar a página: ", error);
+        });
     }
   </script>
 
