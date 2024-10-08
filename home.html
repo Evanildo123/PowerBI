@@ -17,6 +17,8 @@
       display: flex;
       height: 100vh;
       margin: 0;
+      background-color: #f0f2f5;
+      color: #333;
     }
 
     /* Menu lateral */
@@ -30,11 +32,25 @@
       flex-direction: column;
       align-items: center;
       position: relative;
+      transition: width 0.3s;
+    }
+
+    /* Menu recolhido */
+    .menu.compacto {
+      width: 80px;
+      padding: 10px;
     }
 
     .menu h2 {
+      font-weight: 700;
+      font-size: 1.5em;
+      margin-bottom: 30px;
       color: #ED196D;
-      margin-bottom: 20px;
+      transition: opacity 0.3s;
+    }
+
+    .menu.compacto h2 {
+      opacity: 0;
     }
 
     .menu a {
@@ -56,69 +72,59 @@
       transform: scale(1.05);
     }
 
-    /* Conteúdo Principal */
+    .menu.compacto a {
+      padding: 12px;
+      text-align: center;
+    }
+
+    /* Botão de recolher/expandir */
+    .toggle-btn {
+      cursor: pointer;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+      color: #ED196D;
+      background: none;
+      border: none;
+      transition: transform 0.3s;
+    }
+
+    /* Área de conteúdo */
     .content {
       flex: 1;
-      padding: 40px;
-      background-color: #f4f4f4;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #fff;
     }
 
-    .content h2 {
-      font-size: 1.8em;
-      margin-bottom: 20px;
-      color: #ED196D;
-    }
-
-    .content p {
-      font-size: 1.1em;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      color: #555;
-    }
-
-    /* Estilo do botão de logout */
-    .logout-btn {
-      display: inline-block;
-      padding: 12px 20px;
-      font-size: 1em;
-      color: #fff;
-      background-color: #ED196D;
+    /* Estilos do iframe para ocupar toda a área de conteúdo */
+    .content iframe {
+      width: 100%;
+      height: 100%;
       border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .logout-btn:hover {
-      background-color: #d0175e;
     }
   </style>
 </head>
 <body>
 
   <!-- Menu Lateral -->
-  <div class="menu">
+  <div class="menu" id="menu">
+    <button class="toggle-btn" onclick="toggleMenu()">&#9776;</button>
     <h2>Menu</h2>
     <a href="#" onclick="navigate('page1')">Equipamentos</a>
-    <a href="#">Página 2</a>
-    <a href="#">Página 3</a>
+    <a href="#" onclick="navigate('page2')">Página 2</a>
+    <a href="#" onclick="navigate('page3')">Página 3</a>
     <a href="#" class="logout-btn" onclick="logout()">Sair</a>
   </div>
 
-  <!-- Conteúdo Principal -->
+  <!-- Área de Conteúdo -->
   <div class="content" id="content">
     <h2>Bem-vindo à Tela Principal</h2>
     <p>Esta é a sua área principal. Aqui, você pode acessar conteúdos e realizar tarefas dentro do sistema.</p>
-    <p>Você está autenticado e tem acesso às funcionalidades restritas.</p>
-    <ul>
-    </ul>
   </div>
 
   <script>
     // Verifica se o usuário está autenticado
     if (!localStorage.getItem("authToken")) {
-      // Redireciona para a tela de login se o usuário não estiver autenticado
       window.location.href = "index.html";
     }
 
@@ -126,6 +132,12 @@
     function logout() {
       localStorage.removeItem("authToken"); // Remove o token de autenticação
       window.location.href = "index.html";  // Redireciona para a tela de login
+    }
+
+    // Função para alternar o menu entre compacto e expandido
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('compacto');
     }
 
     // Função para redirecionar ou carregar conteúdo
